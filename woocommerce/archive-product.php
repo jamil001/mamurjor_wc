@@ -22,6 +22,20 @@ get_header( 'shop' );
 
 ?>
 
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+      
+        <?php woocommerce_breadcrumb(); ?>
+
+      </ul>
+    </div>
+    <!-- /.breadcrumb-inner --> 
+  </div>
+  <!-- /.container --> 
+</div>
+<!-- /.breadcrumb -->
 
 
 
@@ -692,17 +706,9 @@ get_header( 'shop' );
             </div>
             <!-- /.col -->
             <div class="col col-sm-6 col-md-4 text-right">
-              <div class="pagination-container">
-                <ul class="list-inline list-unstyled">
-                  <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                  <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-                <!-- /.list-inline --> 
-              </div>
+              
+			  <?php flipmart_pagination(); ?>
+			  
               <!-- /.pagination-container --> </div>
             <!-- /.col --> 
           </div>
@@ -789,6 +795,16 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
+
+?>
+ 
+		<div class="clearfix filters-container">
+			<div class="text-right">
+				<?php flipmart_pagination(); ?>
+			</div>
+		</div>
+
+<?php
 
 /**
  * Hook: woocommerce_after_main_content.
