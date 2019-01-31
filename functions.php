@@ -131,6 +131,7 @@ function flipmart_scripts() {
 	wp_enqueue_style( 'flipmart-rateitcss', get_template_directory_uri() . '/assets/css/rateit.css', '7215', true );
 	wp_enqueue_style( 'flipmart-bootstrapselect', get_template_directory_uri() . '/assets/css/bootstrap-select.min.css', '2158', true );
 	wp_enqueue_style( 'flipmart-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', '21595', true );
+
 	wp_enqueue_style( 'flipmart-woo', get_template_directory_uri() . '/assets/css/woo.css', '215995', true );
 	wp_enqueue_style( 'flipmart-navigation', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700' );
 	wp_enqueue_style( 'flipmart-navigation', '//fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' );
@@ -217,3 +218,58 @@ function shop_columns(){
 	return 3;
 }
 add_filter( 'loop_shop_columns', 'shop_columns' );
+
+
+
+//breadcrumb
+
+function flipmart_bread(){
+	return array(
+			'delimiter'     => ' &#47 ',
+			'wrap_before'   => '<div class="breadcrumb-inner"> <ul class="list-inline list-unstyled">',
+			'wrap_after'    => '</ul></div>',
+			'before'        => '',
+			'after'         => '',
+			'home'          => _x( 'Home', 'breadcrumb', 'woocommerce' ),
+
+	);
+}
+add_filter( 'woocommerce_breadcrumb_defaults', 'flipmart_bread' );
+
+
+
+//pagination
+function flipmart_pagination(){
+	global $wp_query;
+	
+	if( $wp_query->max_num_pages <= 1 ) return;
+	
+	$big = 9999999999; // need an unlikely integer
+	$pages = paginate_links( array(
+			'base'        => str_replace( $big, '%#%', esc_url( get_pagenum_link($big))),
+			'format'      => '?paged=%#%',
+			'current'     => max( 1, get_query_var('paged')),
+			'total'       => $wp_query->max_num_pages,
+			'type'        => 'array',
+			'prev_next'   => true,
+			'prev_text'   => __('<i class="fa fa-angle-left" aria-hidden="true" ></i>'),
+			'next_text'   => __('<i class="fa fa-angle-right" aria-hidden="true" ></i>'),
+	));
+	
+	if( is_array(pages)){
+		$paged = ( get_query_var('paged') == 0) ? 1 : get_query_var('paged');
+		echo '<div class="pagination-container"><ul class="list-inline list-unstyled" >';
+		foreach ($pages as $page){
+			echo "<li>$page</li>";
+		}
+		echo '</ul></div>';
+	}
+	
+	
+	
+}
+
+
+
+
+
