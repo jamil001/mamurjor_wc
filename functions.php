@@ -121,42 +121,44 @@ add_action( 'widgets_init', 'flipmart_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+ 
+ define( "VERSION", time() );
 function flipmart_scripts() {
-	wp_enqueue_style( 'flipmart-bootstrapcss', get_template_directory_uri() . '/assets/css/bootstrap.min.css', '215', true );
-	wp_enqueue_style( 'flipmart-maincss', get_template_directory_uri() . '/assets/css/main.css', '2152', true );
-	wp_enqueue_style( 'flipmart-bluecss', get_template_directory_uri() . '/assets/css/blue.css', '2125', true );
-	wp_enqueue_style( 'flipmart-owlcss', get_template_directory_uri() . '/assets/css/owl.carousel.css', '22915', true );
-	wp_enqueue_style( 'flipmart-transitionsowl', get_template_directory_uri() . '/assets/css/owl.transitions.css', '2015', true );
-	wp_enqueue_style( 'flipmart-animatecss', get_template_directory_uri() . '/assets/css/animate.min.css', '2715', true );
-	wp_enqueue_style( 'flipmart-rateitcss', get_template_directory_uri() . '/assets/css/rateit.css', '7215', true );
-	wp_enqueue_style( 'flipmart-bootstrapselect', get_template_directory_uri() . '/assets/css/bootstrap-select.min.css', '2158', true );
-	wp_enqueue_style( 'flipmart-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', '21595', true );
+	wp_enqueue_style( 'flipmart-bootstrapcss', get_template_directory_uri() . '/assets/css/bootstrap.min.css', VERSION, true );
+	wp_enqueue_style( 'flipmart-maincss', get_template_directory_uri() . '/assets/css/main.css', VERSION , true );
+	wp_enqueue_style( 'flipmart-bluecss', get_template_directory_uri() . '/assets/css/blue.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-owlcss', get_template_directory_uri() . '/assets/css/owl.carousel.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-transitionsowl', get_template_directory_uri() . '/assets/css/owl.transitions.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-animatecss', get_template_directory_uri() . '/assets/css/animate.min.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-rateitcss', get_template_directory_uri() . '/assets/css/rateit.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-bootstrapselect', get_template_directory_uri() . '/assets/css/bootstrap-select.min.css',  VERSION , true );
+	wp_enqueue_style( 'flipmart-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css',  VERSION , true );
 
-	wp_enqueue_style( 'flipmart-woo', get_template_directory_uri() . '/assets/css/woo.css', '215995', true );
+	wp_enqueue_style( 'flipmart-woo', get_template_directory_uri() . '/assets/css/woo.css',  '78999999' , true );
 	wp_enqueue_style( 'flipmart-navigation', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700' );
 	wp_enqueue_style( 'flipmart-navigation', '//fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' );
 	wp_enqueue_style( 'flipmart-navigation', '//fonts.googleapis.com/css?family=Montserrat:400,700' );
     wp_enqueue_style( 'flipmart-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'flipmart-jquery', get_template_directory_uri() . '/assets/js/jquery-1.11.1.min.js', array(), '20151215', true );
-	wp_enqueue_script( 'flipmart-bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(), '1215', true );
-	wp_enqueue_script( 'flipmart-dropdownjs', get_template_directory_uri() . '/assets/js/bootstrap-hover-dropdown.min.js', array(), '2015', true );
-	wp_enqueue_script( 'flipmart-carouseljs', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(), '2095', true );
-	wp_enqueue_script( 'flipmart-echo', get_template_directory_uri() . '/assets/js/echo.min.js', array(), '2099', true );
-	wp_enqueue_script( 'flipmart-easing', get_template_directory_uri() . '/assets/js/jquery.easing-1.3.min.js', array(), '20151215', true );
-	wp_enqueue_script( 'flipmart-sliderjs', get_template_directory_uri() . '/assets/js/bootstrap-slider.min.js', array(), '20155', true );
-	wp_enqueue_script( 'flipmart-rateitjs', get_template_directory_uri() . '/assets/js/jquery.rateit.min.js', array(), '29999215', true );
-	wp_enqueue_script( 'flipmart-lightboxjs', get_template_directory_uri() . '/assets/js/lightbox.min.js', array(), '99915', true );
-	wp_enqueue_script( 'flipmart-bootstrapselect', get_template_directory_uri() . '/assets/js/bootstrap-select.min.js', array(), '29999915', true );
-	wp_enqueue_script( 'flipmart-wow', get_template_directory_uri() . '/assets/js/wow.min.js', array(), '2099515', true );
-	wp_enqueue_script( 'flipmart-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(), '20151215', true );
+	wp_enqueue_script( 'flipmart-jquery', get_template_directory_uri() . '/assets/js/jquery-1.11.1.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-dropdownjs', get_template_directory_uri() . '/assets/js/bootstrap-hover-dropdown.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-carouseljs', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-echo', get_template_directory_uri() . '/assets/js/echo.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-easing', get_template_directory_uri() . '/assets/js/jquery.easing-1.3.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-sliderjs', get_template_directory_uri() . '/assets/js/bootstrap-slider.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-rateitjs', get_template_directory_uri() . '/assets/js/jquery.rateit.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-lightboxjs', get_template_directory_uri() . '/assets/js/lightbox.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-bootstrapselect', get_template_directory_uri() . '/assets/js/bootstrap-select.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-wow', get_template_directory_uri() . '/assets/js/wow.min.js', array(),  VERSION , true );
+	wp_enqueue_script( 'flipmart-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(),  VERSION , true );
 
 	
 
 
 
 
-	wp_enqueue_script( 'flipmart-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'flipmart-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(),  VERSION , true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
