@@ -1,8 +1,8 @@
 <?php
 /**
- * Single Product Thumbnails
+ * The template for displaying product content in the single-product.php template
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/single-product/product-thumbnails.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/content-single-product.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -10,36 +10,73 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see         https://docs.woocommerce.com/document/template-structure/
- * @package     WooCommerce/Templates
- * @version     3.5.1
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce/Templates
+ * @version 3.4.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Note: `wc_get_gallery_image_html` was added in WC 3.3.2 and did not exist prior. This check protects against theme overrides being used on older versions of WC.
-if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
+/**
+ * Hook: woocommerce_before_single_product.
+ *
+ * @hooked wc_print_notices - 10
+ */
+do_action( 'woocommerce_before_single_product' );
+
+if ( post_password_required() ) {
+	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 }
+?>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class(); ?>>
 
-global $product;
 
-$attachment_ids = $product->get_gallery_image_ids();
-
-if ( $attachment_ids && $product->get_image_id() ) {   ?>
-	
-	<div id="owl-single-product-thumbnails">
-	
-<?php 	
-	foreach ( $attachment_ids as $attachment_id ) {
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-	}
-	
-	?>
-	
-	</div>
-	
+<div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+                           <div class="product-item-holder size-big single-product-gallery small-gallery">
 	<?php
-}
+		/**
+		 * Hook: woocommerce_before_single_product_summary.
+		 *
+		 * @hooked woocommerce_show_product_sale_flash - 10
+		 * @hooked woocommerce_show_product_images - 20
+		 */
+		do_action( 'woocommerce_before_single_product_summary' );
+	?>
+</div>
+</div>
+	<div class="col-sm-6 col-md-7 product-info-block">
+                           <div class="product-info">
+	<div class="summary entry-summary">
+		<?php
+			/**
+			 * Hook: woocommerce_single_product_summary.
+			 *
+			 * @hooked woocommerce_template_single_title - 5
+			 * @hooked woocommerce_template_single_rating - 10
+			 * @hooked woocommerce_template_single_price - 10
+			 * @hooked woocommerce_template_single_excerpt - 20
+			 * @hooked woocommerce_template_single_add_to_cart - 30
+			 * @hooked woocommerce_template_single_meta - 40
+			 * @hooked woocommerce_template_single_sharing - 50
+			 * @hooked WC_Structured_Data::generate_product_data() - 60
+			 */
+			do_action( 'woocommerce_single_product_summary' );
+		?>
+	</div>
+	</div>
+	</div>
 
+	<?php
+		/**
+		 * Hook: woocommerce_after_single_product_summary.
+		 *
+		 * @hooked woocommerce_output_product_data_tabs - 10
+		 * @hooked woocommerce_upsell_display - 15
+		 * @hooked woocommerce_output_related_products - 20
+		 */
+		//do_action( 'woocommerce_after_single_product_summary' );
+	?>
+</div>
 
+<?php do_action( 'woocommerce_after_single_product' ); ?>
